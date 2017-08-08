@@ -368,6 +368,13 @@ public class StartUI extends WechatApi {
                     handle_mod(dic);
                 }
                 break;
+            case 6:
+                log.info("有人添加你为好友,同步微信.");
+                dic = wxSync();
+                if (null != dic) {
+                    handle_mod(dic);
+                }
+                break;
             default:
                 break;
         }
