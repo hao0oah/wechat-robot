@@ -721,7 +721,12 @@ public class WechatApi {
         params.put("BaseRequest", this.baseRequest);
         Map<String, Object> Msg = new HashMap<String, Object>();
         Msg.put("Type", 1);
-        Msg.put("Content", Utils.unicodeToUtf8(msg));
+//        Msg.put("Content", Utils.unicodeToUtf8(msg));
+        try {
+            Msg.put("Content", Utils.unicodeToUtf8(msg));
+        } catch (Exception e) {
+            Msg.put("Content","没有");
+        }
         Msg.put("FromUserName", this.user.get("UserName"));
         Msg.put("ToUserName", to);
         Msg.put("LocalID", clientMsgId);
