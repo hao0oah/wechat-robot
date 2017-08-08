@@ -31,9 +31,6 @@ public final class Utils {
 
     /**
      * 按顺序创建一个Map
-     *
-     * @param values
-     * @return
      */
     public static Map<String, Object> createMap(Object... values) {
         Map<String, Object> map = new HashMap<String, Object>(values.length / 2);
@@ -162,9 +159,6 @@ public final class Utils {
 
     /**
      * Unicode字符串转为UTF8
-     *
-     * @param str
-     * @return
      */
     public static String unicodeToUtf8(String str) {
         try {
@@ -185,9 +179,6 @@ public final class Utils {
 
     /**
      * 将List Cookie转为String
-     *
-     * @param cookies
-     * @return
      */
     public static String getCookie(List<String> cookies) {
         StringBuilder sBuffer = new StringBuilder();

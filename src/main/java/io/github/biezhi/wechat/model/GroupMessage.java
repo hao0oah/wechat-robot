@@ -5,9 +5,7 @@ import io.github.biezhi.wechat.api.WechatApi;
 
 /**
  * 群消息
- *
- * @author biezhi
- *         17/06/2017
+ * @date 2017/08/08
  */
 public class GroupMessage extends UserMessage {
 

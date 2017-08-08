@@ -4,9 +4,7 @@ import java.io.Serializable;
 
 /**
  * 微信登录session
- *
- * @author biezhi
- *         17/06/2017
+ * @date 2017/08/08
  */
 public class Session implements Serializable {
 

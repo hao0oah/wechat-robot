@@ -19,17 +19,15 @@ import static io.github.biezhi.wechat.api.WechatApi.JSON;
 
 /**
  * 图灵机器人实现
- *
- * @author biezhi
- *         17/06/2017
  */
 public class TulingRobot extends AbstractMessageHandler {
 
-    private String baseUrl = "http://www.tuling123.com/openapi/api";
+    private String baseUrl;
     private String apiKey;
     private String apiSecret;
 
     public TulingRobot(Environment environment) {
+        this.baseUrl = environment.get("tuling.url");
         this.apiKey = environment.get("tuling.api_key");
         this.apiSecret = environment.get("tuling.api_secret");
     }
@@ -63,9 +61,9 @@ public class TulingRobot extends AbstractMessageHandler {
 
     private String getResult(String question) {
 
-        Map<String, Object> data = new HashMap<String, Object>(2);
-        data.put("key", apiKey);
-        data.put("info", question);
+        JsonObject data = new JsonObject();
+        data.addProperty("key", apiKey);
+        data.addProperty("info", question);
 
         //获取时间戳
         String timestamp = String.valueOf(System.currentTimeMillis());
@@ -75,15 +73,15 @@ public class TulingRobot extends AbstractMessageHandler {
 
         //加密
         Aes mc = new Aes(key);
-        String dataStr = mc.encrypt(Utils.toJson(data));
+        String dataStr = mc.encrypt(data.toString());
 
         //封装请求参数
-        Map<String, Object> json = new HashMap<String, Object>(3);
-        json.put("key", apiKey);
-        json.put("timestamp", timestamp);
-        json.put("data", dataStr);
+        JsonObject json = new JsonObject();
+        data.addProperty("key", apiKey);
+        data.addProperty("timestamp", timestamp);
+        data.addProperty("data", dataStr);
 
-        RequestBody requestBody = RequestBody.create(JSON, Utils.toJson(json));
+        RequestBody requestBody = RequestBody.create(JSON, json.toString());
         Request request = new Request.Builder()
                 .url(baseUrl)
                 .post(requestBody)
@@ -104,7 +102,6 @@ public class TulingRobot extends AbstractMessageHandler {
     class TulingRet {
         int code;
         String text;
-
     }
 
 }

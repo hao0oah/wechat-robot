@@ -28,7 +28,11 @@ public class WechatApi {
     // 配置文件环境参数
     protected Environment environment;
 
+    // Web微信
     protected String appid = "wx782c26e4c19acffb";
+    // 微信网页版
+//    protected String appid = "wxeb7ec651dd0aefa9";
+
     protected String wxHost;
 
     // 微信配置信息
@@ -355,9 +359,6 @@ public class WechatApi {
 
     /**
      * 微信初始化
-     *
-     * @return
-     * @throws WechatException
      */
     public boolean webwxinit() {
         if (null == session) {

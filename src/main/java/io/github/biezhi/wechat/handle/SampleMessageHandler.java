@@ -7,16 +7,11 @@ import io.github.biezhi.wechat.model.UserMessage;
 
 /**
  * 一个默认的消息处理实现
- *
- * @author biezhi
- *         17/06/2017
  */
 public class SampleMessageHandler implements MessageHandle {
 
     /**
      * 保存微信消息
-     *
-     * @param msg
      */
     @Override
     public void wxSync(JsonObject msg) {
@@ -30,6 +25,7 @@ public class SampleMessageHandler implements MessageHandle {
         String text = userMessage.getText();
         JsonObject raw_msg = userMessage.getRawMsg();
         String toUid = raw_msg.get("FromUserName").getAsString();
+
         // 撤回消息
         if ("test_revoke".equals(text)) {
             JsonObject dic = userMessage.getWechatApi().wxSendMessage("这条消息将被撤回", toUid);

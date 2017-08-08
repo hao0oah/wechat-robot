@@ -5,9 +5,7 @@ import io.github.biezhi.wechat.api.WechatApi;
 
 /**
  * 用户消息
- *
- * @author biezhi
- *         17/06/2017
+ * @date 2017/08/08
  */
 public class UserMessage {
 
@@ -80,14 +78,6 @@ public class UserMessage {
         this.wechatApi = wechatApi;
     }
 
-    @Override
-    public String toString() {
-        return "UserMessage(" +
-                "location='" + location + '\'' +
-                ", log='" + log + '\'' +
-                ", text='" + text + '\'' +
-                ')';
-    }
 
     public String getMsgId() {
         return msgId;
@@ -129,4 +119,12 @@ public class UserMessage {
         wechatApi.sendText(msg, uid);
     }
 
+    @Override
+    public String toString() {
+        return "UserMessage(" +
+                "location='" + location + '\'' +
+                ", log='" + log + '\'' +
+                ", text='" + text + '\'' +
+                ')';
+    }
 }
