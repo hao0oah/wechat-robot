@@ -10,6 +10,7 @@ import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
 import java.util.concurrent.TimeUnit;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -123,14 +124,13 @@ public final class Utils {
      * @return
      */
     public static String getRandomNumber(int size) {
-        String num = "";
+        Random random = new Random();
+
+        StringBuilder num = new StringBuilder("");
         for (int i = 0; i < size; i++) {
-            double a = Math.random() * 9;
-            a = Math.ceil(a);
-            int randomNum = new Double(a).intValue();
-            num += randomNum;
+            num.append(random.nextInt(10));
         }
-        return num;
+        return num.toString();
     }
 
     /**

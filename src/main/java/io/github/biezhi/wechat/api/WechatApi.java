@@ -239,6 +239,7 @@ public class WechatApi {
             log.warn("错误的状态码: {}", code);
             return false;
         }
+
         session = new Session();
         session.setUuid(Utils.match("window.QRLogin.uuid = \"(.*)\";", response));
         return true;

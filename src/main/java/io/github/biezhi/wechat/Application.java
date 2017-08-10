@@ -15,6 +15,7 @@ public class Application {
         System.setProperty("jsse.enableSNIExtension", "false");
 
         Environment environment = Environment.of("classpath:config.properties");
+        System.setProperties(environment.props());
 
         StartUI startUI = new StartUI(environment);
 

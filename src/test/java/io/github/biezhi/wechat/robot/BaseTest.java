@@ -1,5 +1,6 @@
 package io.github.biezhi.wechat.robot;
 
+import io.github.biezhi.wechat.Utils;
 import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
 import org.junit.Test;
@@ -40,6 +41,7 @@ public abstract class BaseTest {
         System.out.println(data.size());
     }
 
+    // 测试随机数
     @Test
     public void testRandom(){
         Random random = new Random();
@@ -59,8 +61,54 @@ public abstract class BaseTest {
         }
         end = System.currentTimeMillis();
         System.out.println("2耗时："+(end-start));
+    }
+    @Test
+    public void testRandom2(){
+        long start = System.currentTimeMillis();
+        String str = Utils.getRandomNumber(100000);
+        long end = System.currentTimeMillis();
+        System.out.println("耗时："+(start-end)+"毫秒"+"产生数据为："+str);
+    }
 
+    @Test
+    public void testDouble(){
+        double a = 100.00;
+        String b = String.format("%.2f",a);
+        System.out.println(b);
+    }
 
+    @Test
+    public void testSplit(){
+        String str = "1$2$3$4$5$";
+        String[] strs = str.split("\\$");
+        System.out.println(strs.length);
+        for (String s : strs){
+            System.out.print(s + " ");
+        }
+    }
+
+    @Test
+    public void testString() {
+        String s1 = "abc : false";
+        String s2 = "abc";
+
+        System.out.println(s1 == s2 + " : " + s1.equals(s2));
+    }
+
+}
+
+// 测试静态类，静态方法
+class StaticTest{
+    int age;
+    public static void doo(){
+//        静态方法中不能调用非静态方法，不能使用this变量
+//        this.doo2();
+    }
+
+    public void doo2(){
+        // 普通方法中可以调用静态方法，也可以使用this变量
+        this.doo();
+        this.age = 1;
     }
 
 }
